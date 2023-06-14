@@ -7,7 +7,7 @@
 
 Github Repository:
 
-Deployed Page:
+Deployed Page: https://kbliss86.github.io/javascript-password-generator/
 
 ## Description
 
