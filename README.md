@@ -1,7 +1,7 @@
 # Javascript Password Generator
 
 ## Screenshot
-![Website header and nav bar with "hero" section](https://github.com/kbliss86/Advanced-CSS-Portfolio/blob/main/assets/images/Webpage%20snapshot.PNG)
+![Website header and nav bar with "hero" section](https://github.com/kbliss86/javascript-password-generator/blob/main/assets/images/password%20genny.PNG)
 
 ## Links
 
