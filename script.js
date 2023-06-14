@@ -35,7 +35,7 @@ function generatePassword() {
       //if the password length conditions are met - sets the passwordLength variable to the length selected by the user
       passwordLength = length;
     };
-    //determines if the user wants the character types included in the final password and assigns a random character to the password variable if true
+    //determines if the user wants the character types included in the final password and assigns a random character to the password variable if true, only allows character types that the user selects in the totalChar variable
     function getpasswordoptions() {
     if (uppers = window.confirm("Do you want Uppercase letters?")) {
       inlcudeUpper = true;
@@ -57,11 +57,13 @@ function generatePassword() {
       password += specialValues.charAt(Math.floor(Math.random() * specialValues.length))
       totalChars += specialValues;
     };
+    //Tests that atleast one character type is chosen
     if ((inlcudeUpper == true) || (inlcudeLower == true) || (inlcudeNumber == true) || (inlcudeSpecial == true)) {
-    //fills in the remaining characters 
+    //fills in the remaining characters depending on the length selected by the user
     for (var i = password.length; i < passwordLength; i++) {
       password += totalChars.charAt(Math.floor(Math.random() * totalChars.length));
       };
+      //forces the user to reselect the character types for the password
     } else { 
       alert("You Must select atleast 1 type of character");
       getpasswordoptions();
@@ -70,7 +72,7 @@ function generatePassword() {
   getpasswordoptions();
 };
 getPasswordLength();
-
+//logs to check the values that are generated for the password
   console.log("Password Length: " + passwordLength);
   console.log("Include Upper: " + inlcudeUpper + " " + typeof inlcudeUpper);
   console.log("Include Upper: " + inlcudeLower + " " + typeof inlcudeLower);
@@ -80,6 +82,7 @@ getPasswordLength();
   console.log(password);
 
   return password;
+  
 };
 
 // Write password to the #password input
