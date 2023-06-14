@@ -1,52 +1,74 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// function called in the write password (button click) fucntion 
 function generatePassword() {
+  // declare variables 
+  //Variables for each of the password character "types"
   var uppercaseValues = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseValues =  "abcdefghijklmnopqrstuvwxyz";
   var numberValues = "0123456789";
   var specialValues = "!@#$%^&*()";
-  var totalChars = uppercaseValues + lowercaseValues + numberValues + specialValues;
-  console.log(totalChars)
+  //Entire pool of characters that password generator can pull from
+  var totalChars = "";
+  //variable for the desired password length
   var passwordLength;
+  //password variable for the final password that is genertated and displayed
   var password = "";
 
+  //Variables to control if a specific character type is included in the final password (1 character from each that is true)
   var inlcudeUpper = false;
   var inlcudeLower = false;
   var inlcudeNumber = false;
   var inlcudeSpecial = false;
   // var testnumber = 3;
 
+  //function to call to get the character length of the password and also the character types in the final password
   var getPasswordLength = function() {
+    //Prompts user for a password length betwen 8 and 128
     var length = prompt("What is the desired length of the password? (Must be between 8 and 128");
-
+    //condition that prevents password lenght less than 8 or greater than 128 - returns user to the original prompt if condition is violated
     if (length < 8 || length > 128 ) {
       alert("Password must be between 8 and 128 character.");
       getPasswordLength();
     } else { 
+      //if the password length conditions are met - sets the passwordLength variable to the length selected by the user
       passwordLength = length;
     };
-
+    //determines if the user wants the character types included in the final password and assigns a random character to the password variable if true
+    function getpasswordoptions() {
     if (uppers = window.confirm("Do you want Uppercase letters?")) {
       inlcudeUpper = true;
       password += uppercaseValues.charAt(Math.floor(Math.random() * uppercaseValues.length))
+      totalChars += uppercaseValues;
     };
     if (uppers = window.confirm("Do you want Lowerercase letters?")) {
       inlcudeLower = true;
       password += lowercaseValues.charAt(Math.floor(Math.random() * lowercaseValues.length))
+      totalChars += lowercaseValues;
     };
     if (uppers = window.confirm("Do you want Numbers?")) {
       inlcudeNumber = true;
       password += numberValues.charAt(Math.floor(Math.random() * numberValues.length))
+      totalChars += numberValues;
     };
     if (uppers = window.confirm("Do you want Special Characters?")) {
       inlcudeSpecial = true;
       password += specialValues.charAt(Math.floor(Math.random() * specialValues.length))
+      totalChars += specialValues;
     };
+    if ((inlcudeUpper == true) || (inlcudeLower == true) || (inlcudeNumber == true) || (inlcudeSpecial == true)) {
+    //fills in the remaining characters 
     for (var i = password.length; i < passwordLength; i++) {
       password += totalChars.charAt(Math.floor(Math.random() * totalChars.length));
       };
+    } else { 
+      alert("You Must select atleast 1 type of character");
+      getpasswordoptions();
+    };
   };
+  getpasswordoptions();
+};
 getPasswordLength();
 
   console.log("Password Length: " + passwordLength);
@@ -54,6 +76,7 @@ getPasswordLength();
   console.log("Include Upper: " + inlcudeLower + " " + typeof inlcudeLower);
   console.log("Include Upper: " + inlcudeNumber + " " + typeof inlcudeNumber);
   console.log("Include Upper: " + inlcudeSpecial + " " + typeof inlcudeSpecial);
+  console.log("totalchars: " + totalChars);
   console.log(password);
 
   return password;
@@ -71,23 +94,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-// Start with declaring password content variable
-
-// var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" - make an arrary? - addd in lowerCase, Numbers and Special
-
-
-
-
-// Prompt for password length - check condition that response is atleast 8 but less than 128 - alert if outside those params 
-
-// Prompts for how many Upper/lower/number/spec character to inlcude - check condition that the sum of all the criteria less than 128 - alert if outside the params
-    //Check with instructors to make sure i actually NEED to have the NUMBER of characters or just yes/no (boolean)
-
-
-// Check condition if sum of special character = 0 then send alert - change if only yes/no is needed
-
-
-
-
